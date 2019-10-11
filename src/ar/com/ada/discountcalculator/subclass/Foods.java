@@ -17,7 +17,7 @@ public class Foods extends Product {
     }
     public Foods(String day, String name, Double cost) {
         super(name, cost);
-        this.cost = cost;
+        this.day = day;
 
     }
     public Foods(String day, String name, Double cost, Double finalCost) {
@@ -36,12 +36,19 @@ public class Foods extends Product {
     //methods
     @Override
     public Double calculateDiscount() {
-        if (day == "martes" || day == "jueves") {
+        if (day.equals("martes") || day.equals("jueves")) {
+            discount = (cost * 0.10);
             finalCost = cost - (cost * 0.10);
         } else {
+            discount = 0.0;
             finalCost = cost;
         }
         return finalCost;
+    }
+
+    @Override
+    public void showDiscount() {
+        System.out.println("El descuento es de: " + discount + "$\nEl precio final es de: " + finalCost + "$");
     }
 
     @Override
@@ -59,7 +66,7 @@ public class Foods extends Product {
 
     @Override
     public String toString() {
-        return "Categoría: ALIMENTOS - "+ name+" \n Precio de lista: " + cost + "- Precio final, con descuento: " + finalCost;
+        return "Categoría: ALIMENTOS - \nProducto: "+ name+ "\nDía: "+day+" \nPrecio de lista: " + cost+"$";
     }
 
 

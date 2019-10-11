@@ -21,8 +21,9 @@ public class Toys extends Product {
         super(name, cost);
     }
 
-    public Toys( String name, Double cost, Double finalCost) {
-        super(name, cost, finalCost);
+    public Toys( String name, Double cost, Integer quantity) {
+        super(name, cost);
+        this.quantity = quantity;
     }
 
     //getter and setter
@@ -38,11 +39,18 @@ public class Toys extends Product {
     @Override
     public Double calculateDiscount() {
         if (quantity > 3 || cost > 3000) {
+            discount = cost * 0.25;
             finalCost = cost - (cost * 0.25);
         } else {
+            discount = 0.00;
             finalCost = cost;
         }
         return finalCost;
+    }
+
+    @Override
+    public void showDiscount() {
+        System.out.println("El descuento es de: " + discount + "$\nEl precio final es de: " + finalCost + "$");
     }
 
     @Override
@@ -60,7 +68,7 @@ public class Toys extends Product {
 
     @Override
     public String toString() {
-        return "Categoría: JUGUETES -"+name+" \n Precio de lista: " + cost + "- Precio final, con descuento: " + finalCost;
+        return "Categoría: JUGUETES -\nProducto: "+name+"\nPrecio de lista: " + cost;
     }
 
 }

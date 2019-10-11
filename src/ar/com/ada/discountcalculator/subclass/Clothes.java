@@ -36,11 +36,18 @@ public class Clothes extends Product {
     @Override
     public Double calculateDiscount() {
         if (type == 1 || type == 2) {
+            discount = cost * 0.15;
             finalCost = cost - (cost * 0.15);
         } else {
+            discount = 0.00;
             finalCost = cost;
         }
         return finalCost;
+    }
+
+    @Override
+    public void showDiscount() {
+        System.out.println("El descuento es de: " + discount + "$\nEl precio final es de: " + finalCost + "$");
     }
 
     @Override
@@ -58,6 +65,6 @@ public class Clothes extends Product {
 
     @Override
     public String toString() {
-        return "Categoría: ROPA - " + name + "\n Precio de lista: " + cost + "- Precio final, con descuento: " + finalCost;
+        return "Categoría: ROPA -\nProducto: " + name + "\nPrecio de lista: " + cost;
     }
 }

@@ -40,14 +40,21 @@ public class Tools extends Product {
     @Override
     public Double calculateDiscount() {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Ingrese el método de pago: \n Efectivo: 1\n TDC: 2");
+        System.out.println("\nIngrese el modo de pago: \nSi abona en efectivo, ingrese [1] - Con TDC, ingrese [2]");
         paymentMethod = keyboard.nextInt();
         if (paymentMethod == 2) {
+            discount = cost * 0.05;
             finalCost = cost - (cost * 0.05);
         } else {
+            discount = 0.00;
             finalCost = cost;
         }
         return finalCost;
+    }
+
+    @Override
+    public void showDiscount() {
+        System.out.println("El descuento es de: " + discount + "$\nEl precio final es de: " + finalCost + "$");
     }
 
     @Override
@@ -65,7 +72,7 @@ public class Tools extends Product {
 
     @Override
     public String toString() {
-        return "Categoría: HERRAMIENTAS-" +name+ "\n Precio de lista: " + cost + "- Precio final, con descuento: " + finalCost;
+        return "Categoría: HERRAMIENTAS-\nProducto: " +name+ "\nPrecio de lista: " + cost;
     }
 
 }
